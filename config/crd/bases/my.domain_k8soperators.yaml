@@ -1,0 +1,50 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.11.1
+  creationTimestamp: null
+  name: k8soperators.my.domain
+spec:
+  group: my.domain
+  names:
+    kind: K8sOperator
+    listKind: K8sOperatorList
+    plural: k8soperators
+    singular: k8soperator
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: K8sOperator is the Schema for the k8soperators API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: K8sOperatorSpec defines the desired state of K8sOperator
+            properties:
+              image:
+                type: string
+              replicas:
+                type: integer
+            type: object
+          status:
+            description: K8sOperatorStatus defines the observed state of K8sOperator
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

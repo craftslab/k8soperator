@@ -1,0 +1,10 @@
+apiVersion: my.domain/v1
+kind: K8sOperator
+metadata:
+  name: k8soperator-sample
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  image: nginx:latest
+  replicas: 3
